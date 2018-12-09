@@ -1,0 +1,108 @@
+\hypertarget{class_control}{\section{Control Class Reference}
+\label{class_control}\index{Control@{Control}}
+}
+
+
+{\ttfamily \#include $<$Control.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_control_a497563ec0593b497d2611c1fc49e46db}{Control} (ros\-::\-Node\-Handle n)
+\item 
+\hyperlink{class_control_aedda1328c4f8b8d49bca8f0812d3bfd1}{$\sim$\-Control} ()
+\item 
+void \hyperlink{class_control_a26712b5c951b7867390ddcc6b0dd8dce}{get\-Command} (const geometry\-\_\-msgs\-::\-Twist \&msg)
+\item 
+void \hyperlink{class_control_a533326e0d21ff3d104495d6bd34a6300}{get\-Sensor\-Data} (const nxt\-\_\-control\-::\-Sensor\-Data \&msg)
+\item 
+void \hyperlink{class_control_a3fd505ef3e01cdc849aee57de324fd9b}{publish\-Odometry} ()
+\item 
+void \hyperlink{class_control_a4ce11d42c590f4e646f20ded70975c13}{set\-Goal} ()
+\item 
+void \hyperlink{class_control_a2e30ee0e4acae0c6f9266bd94fea679e}{set\-Initial\-Pose} (const geometry\-\_\-msgs\-::\-Pose\-With\-Covariance \&msg)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_control}{Control} class takes care about the communication with a Nxt-\/\-Brick (two motors A\&B and one ultrasonic port 4) The Controler concept is the translation from ros commmon commands to nxt-\/commands. The Controler calculates the Motor\-Commands messages corresponding to a geometry\-\_\-msgs/\-Twist message. The Controler calculates the pose from the ticks of the two Motors and publish a geometry\-\_\-msgs/\-Pose\-With\-Covariance\-Stamped at /odom topic. The Controller publish the ultrasonic measurement as range message in the frame \char`\"{}ultrasonic\char`\"{} 
+
+Definition at line 24 of file Control.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_control_a497563ec0593b497d2611c1fc49e46db}{\index{Control@{Control}!Control@{Control}}
+\index{Control@{Control}!Control@{Control}}
+\subsubsection[{Control}]{\setlength{\rightskip}{0pt plus 5cm}Control\-::\-Control (
+\begin{DoxyParamCaption}
+\item[{ros\-::\-Node\-Handle}]{n}
+\end{DoxyParamCaption}
+)}}\label{class_control_a497563ec0593b497d2611c1fc49e46db}
+The constructor registers all subscriber and publisher at a ros node handle The parameter axis\-Length, wheel radius, min/max speed, goal tolerancen gear ration, encounter per tick and a turning adaption are requested from the ros param server or set if they don't exist. 
+
+Definition at line 20 of file Control.\-cpp.
+
+\hypertarget{class_control_aedda1328c4f8b8d49bca8f0812d3bfd1}{\index{Control@{Control}!$\sim$\-Control@{$\sim$\-Control}}
+\index{$\sim$\-Control@{$\sim$\-Control}!Control@{Control}}
+\subsubsection[{$\sim$\-Control}]{\setlength{\rightskip}{0pt plus 5cm}Control\-::$\sim$\-Control (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_control_aedda1328c4f8b8d49bca8f0812d3bfd1}
+get\-Command subscribs a geometry\-\_\-msgs/\-Twist to publish the Motor\-Commands. The x translation and the z angular ot the twist messageare interpreted as a radian measure and are convert in motor efforts. This efforts are normalized to an mximum speed, for turn only the speed is adapted. 
+
+Definition at line 279 of file Control.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_control_a26712b5c951b7867390ddcc6b0dd8dce}{\index{Control@{Control}!get\-Command@{get\-Command}}
+\index{get\-Command@{get\-Command}!Control@{Control}}
+\subsubsection[{get\-Command}]{\setlength{\rightskip}{0pt plus 5cm}void Control\-::get\-Command (
+\begin{DoxyParamCaption}
+\item[{const geometry\-\_\-msgs\-::\-Twist \&}]{msg}
+\end{DoxyParamCaption}
+)}}\label{class_control_a26712b5c951b7867390ddcc6b0dd8dce}
+
+
+Definition at line 98 of file Control.\-cpp.
+
+\hypertarget{class_control_a533326e0d21ff3d104495d6bd34a6300}{\index{Control@{Control}!get\-Sensor\-Data@{get\-Sensor\-Data}}
+\index{get\-Sensor\-Data@{get\-Sensor\-Data}!Control@{Control}}
+\subsubsection[{get\-Sensor\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void Control\-::get\-Sensor\-Data (
+\begin{DoxyParamCaption}
+\item[{const nxt\-\_\-control\-::\-Sensor\-Data \&}]{msg}
+\end{DoxyParamCaption}
+)}}\label{class_control_a533326e0d21ff3d104495d6bd34a6300}
+
+
+Definition at line 180 of file Control.\-cpp.
+
+\hypertarget{class_control_a3fd505ef3e01cdc849aee57de324fd9b}{\index{Control@{Control}!publish\-Odometry@{publish\-Odometry}}
+\index{publish\-Odometry@{publish\-Odometry}!Control@{Control}}
+\subsubsection[{publish\-Odometry}]{\setlength{\rightskip}{0pt plus 5cm}void Control\-::publish\-Odometry (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_control_a3fd505ef3e01cdc849aee57de324fd9b}
+\hypertarget{class_control_a4ce11d42c590f4e646f20ded70975c13}{\index{Control@{Control}!set\-Goal@{set\-Goal}}
+\index{set\-Goal@{set\-Goal}!Control@{Control}}
+\subsubsection[{set\-Goal}]{\setlength{\rightskip}{0pt plus 5cm}void Control\-::set\-Goal (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_control_a4ce11d42c590f4e646f20ded70975c13}
+\hypertarget{class_control_a2e30ee0e4acae0c6f9266bd94fea679e}{\index{Control@{Control}!set\-Initial\-Pose@{set\-Initial\-Pose}}
+\index{set\-Initial\-Pose@{set\-Initial\-Pose}!Control@{Control}}
+\subsubsection[{set\-Initial\-Pose}]{\setlength{\rightskip}{0pt plus 5cm}void Control\-::set\-Initial\-Pose (
+\begin{DoxyParamCaption}
+\item[{const geometry\-\_\-msgs\-::\-Pose\-With\-Covariance \&}]{msg}
+\end{DoxyParamCaption}
+)}}\label{class_control_a2e30ee0e4acae0c6f9266bd94fea679e}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{_control_8h}{Control.\-h}\item 
+src/\hyperlink{_control_8cpp}{Control.\-cpp}\end{DoxyCompactItemize}

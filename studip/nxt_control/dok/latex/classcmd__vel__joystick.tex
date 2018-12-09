@@ -1,0 +1,104 @@
+\hypertarget{classcmd__vel__joystick}{\section{cmd\-\_\-vel\-\_\-joystick Class Reference}
+\label{classcmd__vel__joystick}\index{cmd\-\_\-vel\-\_\-joystick@{cmd\-\_\-vel\-\_\-joystick}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classcmd__vel__joystick_af0e18e4b1bb5fcac03585e8ffde8e38d}{cmd\-\_\-vel\-\_\-joystick} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classcmd__vel__joystick_a22571f85861dfa5631f68b8e8e6d0497}{joy\-Callback} (const sensor\-\_\-msgs\-::\-Joy\-::\-Const\-Ptr \&joy)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+ros\-::\-Node\-Handle \hyperlink{classcmd__vel__joystick_ae50ce40991b7bfff45a21adbfc028465}{node\-Handle}
+\item 
+ros\-::\-Publisher \hyperlink{classcmd__vel__joystick_a8c089e3c358de60bd10ab17a2553dc44}{cmd\-\_\-vel\-\_\-pub}
+\item 
+ros\-::\-Subscriber \hyperlink{classcmd__vel__joystick_a2947a21136647b829b50058c0ced8b01}{joy\-\_\-sub}
+\item 
+geometry\-\_\-msgs\-::\-Twist \hyperlink{classcmd__vel__joystick_a8f909c2268739f4aad576786c8876576}{cmd\-\_\-vel}
+\item 
+int \hyperlink{classcmd__vel__joystick_a24f26021bde377287c5790dc5f734cc5}{robot\-\_\-drive\-\_\-dir}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 11 of file cmd\-\_\-joy.\-cpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classcmd__vel__joystick_af0e18e4b1bb5fcac03585e8ffde8e38d}{\index{cmd\-\_\-vel\-\_\-joystick@{cmd\-\_\-vel\-\_\-joystick}!cmd\-\_\-vel\-\_\-joystick@{cmd\-\_\-vel\-\_\-joystick}}
+\index{cmd\-\_\-vel\-\_\-joystick@{cmd\-\_\-vel\-\_\-joystick}!cmd_vel_joystick@{cmd\-\_\-vel\-\_\-joystick}}
+\subsubsection[{cmd\-\_\-vel\-\_\-joystick}]{\setlength{\rightskip}{0pt plus 5cm}cmd\-\_\-vel\-\_\-joystick\-::cmd\-\_\-vel\-\_\-joystick (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classcmd__vel__joystick_af0e18e4b1bb5fcac03585e8ffde8e38d}
+
+
+Definition at line 26 of file cmd\-\_\-joy.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classcmd__vel__joystick_a22571f85861dfa5631f68b8e8e6d0497}{\index{cmd\-\_\-vel\-\_\-joystick@{cmd\-\_\-vel\-\_\-joystick}!joy\-Callback@{joy\-Callback}}
+\index{joy\-Callback@{joy\-Callback}!cmd_vel_joystick@{cmd\-\_\-vel\-\_\-joystick}}
+\subsubsection[{joy\-Callback}]{\setlength{\rightskip}{0pt plus 5cm}void cmd\-\_\-vel\-\_\-joystick\-::joy\-Callback (
+\begin{DoxyParamCaption}
+\item[{const sensor\-\_\-msgs\-::\-Joy\-::\-Const\-Ptr \&}]{joy}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classcmd__vel__joystick_a22571f85861dfa5631f68b8e8e6d0497}
+
+
+Definition at line 43 of file cmd\-\_\-joy.\-cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classcmd__vel__joystick_a8f909c2268739f4aad576786c8876576}{\index{cmd\-\_\-vel\-\_\-joystick@{cmd\-\_\-vel\-\_\-joystick}!cmd\-\_\-vel@{cmd\-\_\-vel}}
+\index{cmd\-\_\-vel@{cmd\-\_\-vel}!cmd_vel_joystick@{cmd\-\_\-vel\-\_\-joystick}}
+\subsubsection[{cmd\-\_\-vel}]{\setlength{\rightskip}{0pt plus 5cm}geometry\-\_\-msgs\-::\-Twist cmd\-\_\-vel\-\_\-joystick\-::cmd\-\_\-vel\hspace{0.3cm}{\ttfamily [private]}}}\label{classcmd__vel__joystick_a8f909c2268739f4aad576786c8876576}
+
+
+Definition at line 21 of file cmd\-\_\-joy.\-cpp.
+
+\hypertarget{classcmd__vel__joystick_a8c089e3c358de60bd10ab17a2553dc44}{\index{cmd\-\_\-vel\-\_\-joystick@{cmd\-\_\-vel\-\_\-joystick}!cmd\-\_\-vel\-\_\-pub@{cmd\-\_\-vel\-\_\-pub}}
+\index{cmd\-\_\-vel\-\_\-pub@{cmd\-\_\-vel\-\_\-pub}!cmd_vel_joystick@{cmd\-\_\-vel\-\_\-joystick}}
+\subsubsection[{cmd\-\_\-vel\-\_\-pub}]{\setlength{\rightskip}{0pt plus 5cm}ros\-::\-Publisher cmd\-\_\-vel\-\_\-joystick\-::cmd\-\_\-vel\-\_\-pub\hspace{0.3cm}{\ttfamily [private]}}}\label{classcmd__vel__joystick_a8c089e3c358de60bd10ab17a2553dc44}
+
+
+Definition at line 18 of file cmd\-\_\-joy.\-cpp.
+
+\hypertarget{classcmd__vel__joystick_a2947a21136647b829b50058c0ced8b01}{\index{cmd\-\_\-vel\-\_\-joystick@{cmd\-\_\-vel\-\_\-joystick}!joy\-\_\-sub@{joy\-\_\-sub}}
+\index{joy\-\_\-sub@{joy\-\_\-sub}!cmd_vel_joystick@{cmd\-\_\-vel\-\_\-joystick}}
+\subsubsection[{joy\-\_\-sub}]{\setlength{\rightskip}{0pt plus 5cm}ros\-::\-Subscriber cmd\-\_\-vel\-\_\-joystick\-::joy\-\_\-sub\hspace{0.3cm}{\ttfamily [private]}}}\label{classcmd__vel__joystick_a2947a21136647b829b50058c0ced8b01}
+
+
+Definition at line 19 of file cmd\-\_\-joy.\-cpp.
+
+\hypertarget{classcmd__vel__joystick_ae50ce40991b7bfff45a21adbfc028465}{\index{cmd\-\_\-vel\-\_\-joystick@{cmd\-\_\-vel\-\_\-joystick}!node\-Handle@{node\-Handle}}
+\index{node\-Handle@{node\-Handle}!cmd_vel_joystick@{cmd\-\_\-vel\-\_\-joystick}}
+\subsubsection[{node\-Handle}]{\setlength{\rightskip}{0pt plus 5cm}ros\-::\-Node\-Handle cmd\-\_\-vel\-\_\-joystick\-::node\-Handle\hspace{0.3cm}{\ttfamily [private]}}}\label{classcmd__vel__joystick_ae50ce40991b7bfff45a21adbfc028465}
+
+
+Definition at line 17 of file cmd\-\_\-joy.\-cpp.
+
+\hypertarget{classcmd__vel__joystick_a24f26021bde377287c5790dc5f734cc5}{\index{cmd\-\_\-vel\-\_\-joystick@{cmd\-\_\-vel\-\_\-joystick}!robot\-\_\-drive\-\_\-dir@{robot\-\_\-drive\-\_\-dir}}
+\index{robot\-\_\-drive\-\_\-dir@{robot\-\_\-drive\-\_\-dir}!cmd_vel_joystick@{cmd\-\_\-vel\-\_\-joystick}}
+\subsubsection[{robot\-\_\-drive\-\_\-dir}]{\setlength{\rightskip}{0pt plus 5cm}int cmd\-\_\-vel\-\_\-joystick\-::robot\-\_\-drive\-\_\-dir\hspace{0.3cm}{\ttfamily [private]}}}\label{classcmd__vel__joystick_a24f26021bde377287c5790dc5f734cc5}
+
+
+Definition at line 23 of file cmd\-\_\-joy.\-cpp.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{cmd__joy_8cpp}{cmd\-\_\-joy.\-cpp}\end{DoxyCompactItemize}

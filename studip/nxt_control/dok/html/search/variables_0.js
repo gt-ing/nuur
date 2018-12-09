@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['_5faxis_5flength',['_axis_length',['../classControl.html#a52c40a20af6d88b0ba97b0abf006616b',1,'Control']]],
+  ['_5fdistance',['_distance',['../classControl.html#a1c3805dd46c4de62a6209bf5ed6b3b93',1,'Control']]],
+  ['_5fenc_5fper_5fturn_5fleft',['_enc_per_turn_left',['../classControl.html#acc9c73871491bc8ac005980ae81d9410',1,'Control']]],
+  ['_5fenc_5fper_5fturn_5fright',['_enc_per_turn_right',['../classControl.html#a9f09be60ba816c6c3fb91c47129d2cd1',1,'Control']]],
+  ['_5fgear_5fratio_5fleft',['_gear_ratio_left',['../classControl.html#ad8c978657de600386fc66f935859e095',1,'Control']]],
+  ['_5fgear_5fratio_5fright',['_gear_ratio_right',['../classControl.html#a78d7fb070693640585e703bb6f626cd1',1,'Control']]],
+  ['_5fgoal',['_goal',['../classControl.html#a55028ed5b7ee32c69282a3e51a7d63f1',1,'Control']]],
+  ['_5fgoal_5freached',['_goal_reached',['../classControl.html#a3453d34c9b9f47445c0eabc0f774093c',1,'Control']]],
+  ['_5fmax_5fspeed',['_max_speed',['../classControl.html#ab80522a9174a2af4a37fe8a4ba6ca6d0',1,'Control']]],
+  ['_5fmax_5fturn_5fspeed',['_max_turn_speed',['../classControl.html#a2864230e3525ef542b9f3c2c3e91f9aa',1,'Control']]],
+  ['_5fmin_5fspeed',['_min_speed',['../classControl.html#adc6737dda1cb8b841b486e77d5b3b93c',1,'Control']]],
+  ['_5fn',['_n',['../classControl.html#a535634dd1aa6331c1da87a3da4800fac',1,'Control']]],
+  ['_5fpose',['_pose',['../classControl.html#a5aaf886a6c03a01a66b1d692ee0194ae',1,'Control']]],
+  ['_5ftolrot',['_tolRot',['../classControl.html#ae76716c78a0337c965ff496f9e0ae1fd',1,'Control']]],
+  ['_5ftoltrans',['_tolTrans',['../classControl.html#a1807356ca5230aca9ccb77bf869f007a',1,'Control']]],
+  ['_5fturning_5fadaptation',['_turning_adaptation',['../classControl.html#abcfbef74fbe58b4c24efd11e1c7364f5',1,'Control']]],
+  ['_5fwheel_5fradius_5fl',['_wheel_radius_l',['../classControl.html#a754081ecec9e1e75fc6df94c22d9df3e',1,'Control']]],
+  ['_5fwheel_5fradius_5fr',['_wheel_radius_r',['../classControl.html#a502e3555475215826fc7f9b64ec8e0b2',1,'Control']]]
+];

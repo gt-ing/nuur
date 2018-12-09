@@ -1,0 +1,18 @@
+<!-- 
+
+This launch file shows how to start a hokuyo node. 
+Ans starts the nxt_control motor.
+You may have to change the port parameter if your laser is not at
+/dev/ttyACM0.
+If you have rviz built, you can uncomment the rviz node to visualize the
+laser data.
+Otherwise, you can use rostopic to see the data:
+rostopic echo /scan
+
+-->
+
+<launch>
+  </node>
+  <node name="scan_analyzer" pkg="laserscanner" type="Scan_analyzer" respawn="true" output="screen" />
+  
+</launch>
