@@ -1,0 +1,17 @@
+<launch>
+    <param name="motor_publish_rate" value="50" />
+    <node name="nxt" pkg="nxt_control" type="nxt_control_node" output ="screen">
+        <param name="axis_length" value="0.106"/>
+        <param name="wheel_radius_l" value="0.02"/>
+        <param name="wheel_radius_r" value="0.02"/>
+        <param name="rot_trans" value="0.1"/>
+        <param name="enc_per_turn_right" value="444"/>
+        <param name="enc_per_turn_left" value="444"/>
+        <param name="gear_ratio_left" value="1"/>
+        <param name="gear_ratio_right" value="1"/>
+        <param name="turning_adaption" value="0.6"/>
+        <param name="min_speed" value="100"/>
+        <param name="max_turn_speed" value="80"/>
+        <param name="max_speed" value="95"/>
+    </node>
+</launch>
