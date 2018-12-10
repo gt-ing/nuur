@@ -3,6 +3,9 @@
  *
  *  Created on: 06.11.2015
  *      Author: rt6
+ *
+ * Update on: 10.12.2018
+ *	Author: GT
  */
 
 #include "Control.h"
