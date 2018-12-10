@@ -1,0 +1,29 @@
+Topic's
+
+nxt_control:
+	Send:
+		/motor_command	TO	nxt
+		/nextcmd	TO	brain
+		/odom		TO	brain
+		/ultrasonic	TO	brain
+		
+	Receive
+		/cmd_vel	FROM	brain
+		/sensor_data	FROM	nxt
+
+brain
+	Send:
+		/cmd_vel	TO	nxt_control
+
+	Receive
+		/nextcmd	FROM	brain
+		/odom		FROM	brain
+		/ultrasonic	FROM	brain
+
+nxt, nxt_sim
+	Send:
+		/sensor_data	TO	nxt_control
+
+	Receive:
+		/motor_command	FROM	nxt_control
+		

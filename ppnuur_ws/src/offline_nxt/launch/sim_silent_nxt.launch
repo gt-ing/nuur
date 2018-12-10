@@ -1,0 +1,5 @@
+<launch>
+    <node name="offline_nxt_simulation" pkg="offline_nxt" type="sim_silent_nxt_node" output ="screen">
+        <!--param name="axis_length" value="0.106"/-->
+    </node>
+</launch>
