@@ -120,7 +120,7 @@ Control::Control(ros::NodeHandle _node) {
 	this->goal.x = 0;
 	this->goal.y = 0;
 	this->goal.th = 0;
-    this->goal_reached = true;
+    this->goal_reached_flag = true;
 
 	// Publisher & Subscriber initialisieren
 	this->pubOdom   = this->node.advertise<nav_msgs::Odometry>(
@@ -168,7 +168,7 @@ void Control::getCommand(const geometry_msgs::Twist& msg) {
         ROS_INFO("MSG FROM BRAIN: th: %f ", msg.angular.z);
 	}
     
-	this->goal_reached = false;
+	this->goal_reached_flag = false;
     
 	// Leistung der Motoren berechnen und publishen
 	nxt_control::MotorCommand cmd = publishEffort(msg, th_speed);
@@ -262,7 +262,7 @@ void Control::getSensorData(const nxt_control::SensorData& msg) {
 		pubNextcmd.publish(m);
         
         // Reset goal tracker
-        this->goal_reached = true;
+        this->goal_reached_flag = true;
 	}
     
     // Republish sonic range in ros format with transformation

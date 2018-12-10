@@ -8,6 +8,7 @@
 #ifndef CONTROL_H_
 #define CONTROL_H_
 #include <ros/ros.h>
+#include <sensor_msgs/Range.h>
 #include <geometry_msgs/Twist.h>
 #include <geometry_msgs/PoseWithCovarianceStamped.h>
 #include <nav_msgs/Odometry.h>
@@ -26,8 +27,8 @@ class Control {
     
     // Structure of 2D pose
     struct Pose {
-        double x,
-        double y,
+        double x;
+        double y;
         double th;
     };
     
@@ -67,7 +68,7 @@ class Control {
     //! Tolerance for the heading
     double tolRot;
     
-    bool   goal_reached;
+    bool   goal_reached_flag;
     double max_speed;
     double min_speed;
     double max_turn_speed;
