@@ -1,5 +1,5 @@
 /**
- .2 * Control.cpp
+ * Control.cpp
  *
  *  Created on: 06.11.2015
  *      Author: rt6
@@ -20,7 +20,7 @@ Control::Control(ros::NodeHandle n) {
 	_n = n;
 	_distance = 0;
 
-	//******************************************************** Parameter Server auslesen; wenn leer: Standard Werte setzen
+	//******************************************************** Parameter Server auslesen; wenn leer: Standard Werte setzen */
 	if (!_n.getParam("/nxt/tol_rot", _tolRot)) {
 		_tolRot = 10.0 / 180.0 * M_PI;
 		_n.setParam("/nxt/tol_rot", _tolRot);
@@ -69,7 +69,7 @@ Control::Control(ros::NodeHandle n) {
 		_n.setParam("/nxt/max_turn_speed", _max_turn_speed);
 	}
 
-	if (!_n.getParam("min_speed", _min_speed)) {
+	if (!_n.getParam("/nxt/min_speed", _min_speed)) {
 		_min_speed = 100;
 		_n.setParam("/nxt/min_speed", _min_speed);
 	}
@@ -84,7 +84,7 @@ Control::Control(ros::NodeHandle n) {
 	_pose.y = 0;
 	_pose.th = 0;
 
-	//******************************************************** Publisher & Subscriber initialisieren
+	//******************************************************** Publisher & Subscriber initialisieren */
 	pubOdom = _n.advertise < nav_msgs::Odometry > ("odom", 10); //Topic = "odom", msg_type=Position (x,y,z)+ quaternion orientation(x,y,z) +covariance, Wartschlange = 10
 	pubEffort = _n.advertise < nxt_control::MotorCommand
 			> ("motor_command", 10); //Topic = "motor_command" msg_type = MotorCommand
@@ -98,7 +98,7 @@ Control::Control(ros::NodeHandle n) {
 void Control::getCommand(const geometry_msgs::Twist& msg) {
 	double th_speed = _max_speed;
 
-	//******************************************************** Drehung = 0: lineare Bewegung berechnen
+	//******************************************************** Drehung = 0: lineare Bewegung berechnen */
 	if (msg.angular.z == 0) {
 		_goal.x = _pose.x + msg.linear.x * cos(_pose.th);
 		_goal.y = _pose.y + msg.linear.x * sin(_pose.th);
@@ -108,7 +108,7 @@ void Control::getCommand(const geometry_msgs::Twist& msg) {
 
 	}
 
-	//******************************************************** sonst: Rotation berechnen
+	//******************************************************** sonst: Rotation berechnen */
 	else {
 		th_speed = _max_turn_speed;
 		double newTheta = fmod(_pose.th + msg.angular.z + 3 * M_PI, 2 * M_PI)
@@ -123,7 +123,7 @@ void Control::getCommand(const geometry_msgs::Twist& msg) {
 		_goal.th = newTheta;
 	}
 	_goal_reached = false;
-	//******************************************************** leistung der Motoren berechnen und publishen
+	//******************************************************** leistung der Motoren berechnen und publishen */
 	nxt_control::MotorCommand cmd = publishEffort(msg, th_speed); //Nehme geometry_msgs/Twist msg und berechne l_effort und r_effort der Motoren
 	ROS_INFO("MotorCommand: r effort before publishing: %f l effort: %f",
 			cmd.r_effort, cmd.l_effort);
@@ -137,7 +137,7 @@ void Control::getCommand(const geometry_msgs::Twist& msg) {
 nxt_control::MotorCommand Control::publishEffort(
 		const geometry_msgs::Twist& msg, double th_speed) {
 
-	//******************************************************** effort der Motoren berechnen
+	//******************************************************** effort der Motoren berechnen */
 	double v_l_soll = msg.linear.x + _axis_length * 0.5 * msg.angular.z;
 	double v_r_soll = msg.linear.x - _axis_length * 0.5 * msg.angular.z;
 	double v_left = (v_l_soll / (2.0 * M_PI * _wheel_radius_l) * 60.0
