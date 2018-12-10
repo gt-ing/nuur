@@ -8,11 +8,12 @@
 #ifndef CONTROL_H_
 #define CONTROL_H_
 #include <ros/ros.h>
-#include "geometry_msgs/Twist.h"
-#include "geometry_msgs/PoseWithCovarianceStamped.h"
-#include "nxt_control/MotorCommand.h"
-#include "nxt_control/SensorData.h"
+#include <sensor_msgs/Range.h>
+#include <geometry_msgs/Twist.h>
+#include <geometry_msgs/PoseWithCovarianceStamped.h>
 #include <nav_msgs/Odometry.h>
+#include <nxt_control/MotorCommand.h>
+#include <nxt_control/SensorData.h>
 
 /**
  * The Control class takes care about the communication with a Nxt-Brick (two motors A&B and one ultrasonic port 4)
@@ -23,57 +24,68 @@
  */
 
 class Control {
-	nxt_control::MotorCommand publishEffort(const geometry_msgs::Twist& msg,
-			double th_speed);
+    
+    // Structure of 2D pose
+    struct Pose {
+        double x;
+        double y;
+        double th;
+    };
+    
+    // Values
+    Pose pose;
+    Pose goal;
+    
+    // ROS values
+    ros::NodeHandle node;
+    
+    ros::Publisher  pubOdom;
+    ros::Publisher  pubUltrasonic;
+    ros::Publisher  pubEffort;
+    ros::Publisher  pubNextcmd;
+    
+    ros::Subscriber subMotorCommand;
+    ros::Subscriber subSensorData;
+    
+    //! Distance between the wheels
+    double axis_length;
+    //! Radius of the robot wheel
+    double wheel_radius_r;
+    //! Ration between command and right motor effort
+    double gear_ratio_right;
+    //! Radius of the robot wheel
+    double wheel_radius_l;
+    //! Ration between command and right motor effort
+    double gear_ratio_left;
+    //! encounter per turn left wheel
+    double enc_per_turn_left;
+    //! encounter per turn right wheel
+    double enc_per_turn_right;
+    //! Adjustment for difference between left and right turning
+    double turning_adaptation;
+    //! Tolerance for the position
+    double tolTrans;
+    //! Tolerance for the heading
+    double tolRot;
+    
+    bool   goal_reached_flag;
+    double max_speed;
+    double min_speed;
+    double max_turn_speed;
+    double distance;
+    
+	nxt_control::MotorCommand publishEffort(
+                                const geometry_msgs::Twist& msg,
+                                double th_speed);
+    
 	void updatePosition(const nxt_control::SensorData& msg);
+    
 	nav_msgs::Odometry publishOdom();
+    
 	void normSpeedTo(double& speed1, double& speed2, double maxspeed);
+    
 	nxt_control::MotorCommand pubStop();
-	//! The Pose include the 2 d x and x position and the heading th.
-	struct Pose {
-		double x, y, th;
-	};
-	//! Goal pose is calculated from actual pose + velocity command
-	Pose _goal;
-	//! Actual pose of the robot
-
-	Pose _pose;
-	//! Ros node handle
-	ros::NodeHandle _n;
-	//!publish the position default tiopic:odom.
-	ros::Publisher pubOdom;
-
-	 //! publish the ultrasonic range measurement in the "ultrasonic" frame default topic:ultrasonic
-	ros::Publisher pubUltrasonic;
-	ros::Publisher pubEffort;
-	ros::Subscriber subCommand;
-	ros::Subscriber subSensors;
-	ros::Publisher pubNextcmd;
-	double _axis_length;
-	double _wheel_radius_r;
-	//! Ration between command and right motor effort
-	double _gear_ratio_right;
-	double _wheel_radius_l;
-	//! Ration between command and right motor effort
-	double _gear_ratio_left;
-	//! encounter per turn left wheel
-	double _enc_per_turn_left;
-
-	//! encounter per turn right wheel
-	double _enc_per_turn_right;
-
-	//! Adjustment for difference between left and right turning
-	double _turning_adaptation;
-	//! Tolerance for the position
-	double _tolTrans;
-	//! Tolerance for the heading
-	double _tolRot;
-
-	bool _goal_reached;
-	double _max_speed;
-	double _min_speed;
-	double _max_turn_speed;
-	double _distance;
+    
 	/**
 	 * goal_reached checks if a position is near enough to the goal position
 	 * @param [in] x double, x coordinate of the robot

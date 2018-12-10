@@ -1,3 +1,5 @@
+#define FIXED_MODE 1
+
 #include "ros/ros.h"
 #include <string>
 #include <iostream>
@@ -200,15 +202,21 @@ void ScanAnalyzer::scanner_callback(const sensor_msgs::LaserScan &scan) {
 	angle_min = scan.angle_min;
 	actScan = scan.ranges;
 
-	std::cout << "Type 0 for show actual scan + transformed scan 1"
+	std::cout << "Type 0 for show actual scan + transformed scan 1" << std::endl
 			<< "Type 1 or 2 to save actual scan as scan 1 or 2" << std::endl
 			<< "Type 3 for calculation of transformation" << std::endl
 			<< "Type 4 for switch to LiDAR odometry" << std::endl;
+#ifndef FIXED_MODE
 	if (mode != 4) {
 		char input[100];
 		std::cin >> input;
 		mode = atoi(input);
 	}
+#else
+	mode = FIXED_MODE;
+	std::cout << "Type " << mode << std::endl;
+#endif
+
 	std::vector<float> der = compute_derivative(actScan);
 	switch (mode) {
 	case 1:

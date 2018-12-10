@@ -12,7 +12,6 @@ rostopic echo /scan
 -->
 
 <launch>
-  </node>
-  <node name="scan_analyzer" pkg="laserscanner" type="Scan_analyzer" respawn="true" output="screen" />
-  
+  <node name="scan_analyzer" pkg="laserscanner" type="ScanAnalyzer" respawn="true" output="screen" >
+  </node>  
 </launch>
