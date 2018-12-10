@@ -18,32 +18,41 @@ int mode = 0;
  Konstruktor der Scan_analyser Klasse
  Es wird eine Roboterposition, verwendete Konstanten und die Publisher/Subscriber initialisiert
  */
-ScanAnalyzer::ScanAnalyzer(ros::NodeHandle n) {
-	n_ = n;
-	angle_increment = 0.0;
-	angle_min = 0;
-	min_dist = 0.01;
-	max_dist = 4.00;
-	depth_jump = 0.01;
-	merge_radius = 0.03;
-	marker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker",
-			1);
-	subScan = n.subscribe("scan", 1, &ScanAnalyzer::scanner_callback, this);
-	c=1;
-	s=0;
-	tx=0;
-	ty=0;
+ScanAnalyzer::ScanAnalyzer(ros::NodeHandle _node) {
+	this->node              = _node;
+    
+	this->angle_increment   = 0.0;
+	this->angle_min         = 0;
+	this->min_dist          = 0.01;
+	this->max_dist          = 4.00;
+	this->depth_jump        = 0.01;
+	this->merge_radius      = 0.03;
+    
+	this->marker_pub        = n.advertise<visualization_msgs::Marker>(
+                                            "visualization_marker", 1);
+    
+	subScan                 = n.subscribe("scan", 1,
+                                          &ScanAnalyzer::scanner_callback, this);
+    
+	this->c     = 1;
+	this->s     = 0;
+	this->tx    = 0;
+	this->ty    = 0;
 }
 
 void ScanAnalyzer::draw_icp(const vector<Point2d>& cloud,
-		const vector<Point2d>& last_cloud, cv::Mat R, cv::Mat T) {
+                            const vector<Point2d>& last_cloud,
+                            cv::Mat R,
+                            cv::Mat T) {
 	Mat img(1000, 1000, CV_8UC3, Scalar(255, 255, 255));
 	Point2d center(img.cols / 2, img.rows / 2);
 	double resolution = 500;
+
 	for (const auto& p : cloud) {
 		Point2d v = p * resolution + center;
 		circle(img, v, 2, Scalar(0, 0, 255), -1);
 	}
+
 	for (const auto& p : last_cloud) {
 		Point2d v = p * resolution + center;
 		circle(img, v, 2, Scalar(255, 0, 0), -1);
@@ -55,13 +64,14 @@ void ScanAnalyzer::draw_icp(const vector<Point2d>& cloud,
 		Point2d v2 = t * resolution + center;
 		circle(img, v2, 2, Scalar(0, 255, 0), -1);
 	}
+
 	imshow("ICP", img);
 	waitKey(10);
 }
 
-vector<pair<Point2d, Point2d> > ScanAnalyzer::assignemnt(
-		const vector<Point2d>& cloud, const vector<Point2d>& l) {
-	vector<pair<Point2d, Point2d> > assignments;
+vector<pair<Point2d, Point2d>> ScanAnalyzer::assignemnt(const vector<Point2d>& cloud,
+                                                        const vector<Point2d>& l) {
+	vector<pair<Point2d, Point2d>> assignments;
 	return assignments;
 }
 
@@ -69,9 +79,11 @@ vector<pair<Point2d, Point2d> > ScanAnalyzer::assignemnt(
  Main
  */
 cv::Mat ScanAnalyzer::liDarOdom(vector<float> scan) {
-	Mat proj= Mat::eye(Size(3, 3), CV_64F);
-	static vector<Point2d> last_cloud;
-	vector<Point2d> cloud;
+	Mat proj = Mat::eye(Size(3, 3), CV_64F);
+    
+	static vector<Point2d>  last_cloud;
+	vector<Point2d>         cloud;
+    
 	for (int i = 0; i < scan.size(); i++) {
 		double f = scan[i];
 		if (isnan(f) || isinf(f))
